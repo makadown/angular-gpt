@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-chat-message',
+  selector: 'app-gpt-message',
   standalone: true,
   imports: [
     CommonModule,
   ],
-  templateUrl: './chatMessage.component.html',
+  templateUrl: './gptMessage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatMessageComponent { 
+export class GptMessageComponent { 
   @Input({required: true}) text!: string;
 }
