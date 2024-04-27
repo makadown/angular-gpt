@@ -39,7 +39,7 @@ em {
 }
 
 .chat-container {
-  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-[calc(100vh-90px)] p-4 w-[calc(100vw-300px)];
+  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-[calc(100vh-90px)] p-4 w-[calc(100vw-450px)];
 }
 
 .chat-messages {
