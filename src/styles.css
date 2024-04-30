@@ -9,6 +9,7 @@ html, body {
 
 }
 
+
 h1 {
   @apply text-3xl font-bold mb-4;
 }
@@ -39,8 +40,9 @@ em {
 }
 
 .chat-container {
-  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-[calc(100vh-90px)] p-4 w-[calc(100vw-450px)];
+  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-[calc(100vh-90px)] p-4 w-[calc(100vw-500px)];
 }
+
 
 .chat-messages {
   @apply flex flex-col h-full overflow-x-auto overflow-y-auto mb-4;
@@ -68,7 +70,6 @@ em {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
 
 /* Animations */
 
