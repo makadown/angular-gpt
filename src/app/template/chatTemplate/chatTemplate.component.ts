@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMessageEvent, TextMessageBoxEvent, GptMessageComponent, MyMessageComponent, TypingLoaderComponent, TextMessageBoxComponent } from '@components/index';
 import { Message } from '@interfaces/index';
-import { OpenAiService } from 'app/presentation/services/openai.service';
+import { OpenAiService } from '../../presentation/services/openai.service';
 
 @Component({
   selector: 'app-chat-template',
