@@ -45,7 +45,7 @@ em {
 
 
 .chat-messages {
-  @apply flex flex-col h-full overflow-x-auto overflow-y-auto mb-4;
+  @apply flex flex-col h-full text-wrap overflow-y-auto mb-4;
 }
 
 /* scrollbar */
