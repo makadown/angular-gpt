@@ -11,6 +11,11 @@
             @if (audioUrl && audioUrl.length > 0) {
                 <audio controls src="{{ audioUrl }}" autoplay class="w-full"></audio>
             }            
+            @if (imageInfo && imageInfo.url.length > 0) {
+                <img src="{{ imageInfo.url }}"
+                     alt="{{ imageInfo.alt }}"
+                     class="rounded-xl w-96 h-96 object-cover">
+            }
         </div>
     </div>
 </div>
