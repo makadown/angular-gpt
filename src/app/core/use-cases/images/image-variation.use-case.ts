@@ -10,7 +10,7 @@ interface Image {
 }
 
 export const imageVariationUseCase = async(
-        originalImage:string
+        baseImage:string
     ):Promise<GeneratedImage> => {
     try{
         const response = await fetch(`${environment.backendApi}/image-variation`, {
@@ -18,7 +18,7 @@ export const imageVariationUseCase = async(
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ originalImage })
+            body: JSON.stringify({  baseImage })
         });
 
         if(!response.ok){ throw new Error('No se pudo generar imagen'); }

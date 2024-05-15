@@ -1,0 +1,29 @@
+<div class="col-start-1 col-end-9 p-3 rounded-lg">
+    <div class="flex flex-row items-center justify-start">
+
+        <div class="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink-0">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+
+        <div class="relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl">
+            
+            
+            @if (imageInfo && imageInfo.url.length > 0) {
+                <!-- <img src="{{ imageInfo.url }}"
+                     alt="{{ imageInfo.alt }}"
+                     class="rounded-xl object-cover"
+                    width="1024"
+                    height="1024"
+                    (click)="handleClick()"> -->
+                <canvas 
+                    #canvas 
+                    width="1024"
+                    height="1024"
+                    (mousedown)="onMouseDown($event)"
+                    (mousemove)="onMouseMove($event)"
+                    (mouseup)="onMouseUp($event)"
+                    ></canvas>
+            }
+        </div>
+    </div>
+</div>

@@ -4,23 +4,27 @@
         <span>Editando</span>
         <img src="{{ originalImage() }}" alt="imagen a editar"
             class="border rounded-xl w-36 h-36 object-contain">
+            
+        <button class="btn-primary" (click)="generateVariation()">
+                Generar variación
+        </button>
     </div>
-    <button class="btn-primary" (click)="generateVariation()">
-        Generar variación
-    </button>
 }
 
 <div class="chat-container">
     <div class="chat-messages">
         <div class="grid gap-y-2">
             <!-- Chat messages -->
-            <app-gpt-message text="Escribe qué imagen quieres que te tunée..."/>
+            <app-gpt-message text="¿Qué imagen quieres que te genere..."/>
 
             @for (message of messages(); track $index)
             {
                 @if (message.isGpt) {
-                    <app-gpt-message [text]="message.text" [imageInfo]="message.imageInfo">
-                    </app-gpt-message>
+                    <app-gtp-message-editable-image 
+                            [text]="message.text"
+                            [imageInfo]="message.imageInfo!"
+                            (onSelectedImage)="handleSelectedImage($event, message.imageInfo?.url!)">
+                    </app-gtp-message-editable-image>
                 } 
                 @else {
                     <app-my-message [text]="message.text">
