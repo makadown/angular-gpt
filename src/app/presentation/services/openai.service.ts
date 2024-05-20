@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
-import { audioToTextUseCase, imageGenerationUseCase, imageVariationUseCase, orthographyUseCase, prosConsStreamUseCase, prosConsUseCase, textToAudioUseCase, translateUseCase } from '@use-cases/index';
-import { from } from 'rxjs';
+import { Message } from '@interfaces/index';
+import { audioToTextUseCase,
+        createThreadUseCase,
+        imageGenerationUseCase,
+        imageVariationUseCase,
+        orthographyUseCase,
+        prosConsStreamUseCase,
+        prosConsUseCase,
+        textToAudioUseCase,
+        translateUseCase,
+        userQuestionThreadUseCase 
+      } from '@use-cases/index';
+import { Observable, from, of, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OpenAiService {
+  
+  private THREADID = 'threadId';
 
   constructor() { }
 
@@ -40,6 +53,43 @@ export class OpenAiService {
 
   imageVariation( baseImage:string ) {
     return from( imageVariationUseCase(baseImage));
+  }
+
+  // create thread and store its id in localstorage
+  createThread(): Observable<string> {
+    if (localStorage.getItem(this.THREADID)) {
+      return of(localStorage.getItem(this.THREADID)!);
+    }
+
+    return from( createThreadUseCase()).pipe(
+                // store thread id in localstorage
+                // and return it
+                tap((threadId) => localStorage.setItem(this.THREADID, threadId))
+              );
+  }
+
+  postQuestion(threadId: string, question: string) {
+    return from( userQuestionThreadUseCase(threadId, question));
+  }
+
+  /**
+   * Save the conversation in localstorage
+   * @param threadId 
+   * @param replies 
+   */
+  saveConversation(threadId: string, replies: Message[]) {
+    localStorage.setItem(threadId+'-replies', JSON.stringify(replies));
+  }
+
+  /**
+   * Load conversations from localstorage
+   */
+  loadConversation(threadId: string) {
+    const replies = localStorage.getItem(threadId+'-replies');
+    if (replies) {
+      return JSON.parse(replies);
+    }
+    return [];
   }
 
 }
